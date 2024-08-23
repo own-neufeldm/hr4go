@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"hr4go/lib"
 	"strings"
 )
 
@@ -65,7 +66,7 @@ func main() {
 	flag.Parse()
 
 	if showVersion {
-		fmt.Println("Not defined.")
+		fmt.Println("v1.0.0")
 		return
 	}
 
@@ -88,7 +89,7 @@ func main() {
 	}
 
 	for _, title := range titles {
-		horizontalRule := GetHorizontalRule(title, length, border, string(filler[0]))
+		horizontalRule := lib.GetHorizontalRule(title, length, border, string(filler[0]))
 		if noNewline {
 			fmt.Print(horizontalRule)
 		} else {
