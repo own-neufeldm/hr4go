@@ -3,8 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"hr4go/lib"
 	"strings"
+
+	"github.com/own-neufeldm/hr4go/lib"
 )
 
 func usage() {
