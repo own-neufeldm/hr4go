@@ -27,43 +27,49 @@ Options:
 
 func main() {
 	var length int
-	flag.IntVar(&length, "l", 50, "Minimum character length.")
-	flag.IntVar(&length, "length", 50, "Minimum character length.")
+	for _, name := range []string{"l", "length"} {
+		flag.IntVar(&length, name, 50, "Minimum character length.")
+	}
 
 	var border string
-	flag.StringVar(&border, "b", "//", "Character(s) to use for outer borders.")
-	flag.StringVar(&border, "border", "//", "Character to use for inner fillers.")
+	for _, name := range []string{"b", "border"} {
+		flag.StringVar(&border, name, "//", "Character(s) to use for outer borders.")
+	}
 
 	var filler string
-	flag.StringVar(&filler, "f", "-", "Character(s) to use for outer borders.")
-	flag.StringVar(&filler, "filler", "-", "Character to use for inner fillers.")
+	for _, name := range []string{"f", "filler"} {
+		flag.StringVar(&filler, name, "-", "Character(s) to use for outer borders.")
+	}
 
 	var asParagraph bool
-	flag.BoolVar(&asParagraph, "p", false, "Prepend 'BEGIN' and 'END' before title.")
-	flag.BoolVar(&asParagraph, "paragraph", false, "Prepend 'BEGIN' and 'END' before title.")
+	for _, name := range []string{"p", "paragraph"} {
+		flag.BoolVar(&asParagraph, name, false, "Prepend 'BEGIN' and 'END' before title.")
+	}
 
 	var upper bool
-	flag.BoolVar(&upper, "u", false, "Convert title to uppercase.")
-	flag.BoolVar(&upper, "upper", false, "Convert title to uppercase.")
+	for _, name := range []string{"u", "upper"} {
+		flag.BoolVar(&upper, name, false, "Convert title to uppercase.")
+	}
 
 	var noNewline bool
-	flag.BoolVar(&noNewline, "n", false, "Do not print a new-line character at the end.")
-	flag.BoolVar(&noNewline, "no-newline", false, "Do not print a new-line character at the end.")
+	for _, name := range []string{"n", "no-newline"} {
+		flag.BoolVar(&noNewline, name, false, "Do not print a new-line character at the end.")
+	}
 
 	var showVersion bool
-	flag.BoolVar(&showVersion, "v", false, "Show version and exit.")
-	flag.BoolVar(&showVersion, "version", false, "Show version and exit.")
+	for _, name := range []string{"v", "version"} {
+		flag.BoolVar(&showVersion, name, false, "Show version and exit.")
+	}
 
 	flag.Usage = usage
 	flag.Parse()
-
-	var title = flag.Arg(0)
 
 	if showVersion {
 		fmt.Println("Not defined.")
 		return
 	}
 
+	var title = flag.Arg(0)
 	if upper {
 		title = strings.ToUpper(title)
 	}
