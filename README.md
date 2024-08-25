@@ -31,7 +31,7 @@ Use `hr4go` without arguments to print an untitled horizontal rule:
 ```
 $ hr4go
 
-# ---------------------------------------------- #
+// -------------------------------------------- //
 ```
 
 Provide border characters and a title to print a comment, e.g. for Java:
